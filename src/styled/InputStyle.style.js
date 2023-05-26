@@ -16,7 +16,13 @@ const InputStyle = styled.input.attrs()`
   text-align: left;
 
   &:focus {
-    outline-color:#9F8170;
+    outline-color: #9f8170;
+  }
+
+  // Media Queries
+  @media (max-width: 600px) {
+    height: 25px;
+  }
 `;
 
 export default InputStyle;
