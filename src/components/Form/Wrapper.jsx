@@ -12,7 +12,7 @@ const Wrapper = () => {
       <Heading />
       <InputFile />
       <Input />
-      <Button />
+      {/* <Button /> */}
       </FormWrapper>
     </div>
   );
