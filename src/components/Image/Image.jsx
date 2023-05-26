@@ -1,16 +1,14 @@
-import React from 'react'
-import ImageStyle from '../../styled/ImageStyle.style'
-import formImage from '../../assets/images/formImage.png'
-import DivImageStyle from '../../styled/DivImageStyle.style'
+import React from "react";
+import ImageStyle from "../../styled/ImageStyle.style";
+import formImage from "../../assets/images/formImage.png";
+import ImageWrapper from "../../styled/ImageWrapper.style";
 
 const Image = () => {
   return (
-    <div>
-        <DivImageStyle>
+    <ImageWrapper>
       <ImageStyle src={formImage} alt="SignUp image" />
-      </DivImageStyle>
-    </div>
-  )
-}
+    </ImageWrapper>
+  );
+};
 
-export default Image
+export default Image;

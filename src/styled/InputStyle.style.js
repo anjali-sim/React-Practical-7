@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
+// Style for the input fields
 const InputStyle = styled.input.attrs()`
-background: #faebd8;
-border: 1px solid #faebd8;
+  background: #faebd8;
+  border: 1px solid #faebd8;
   color: black;
-//   cursor: pointer;
   margin-top: 8px;
   margin-bottom: 10px;
   width: 100%;

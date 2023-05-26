@@ -4,10 +4,10 @@ import LabelPhotoStyle from "../styled/LabelPhotoStyle.style";
 
 const InputFile = () => {
   return (
-    <div>
-      <LabelPhotoStyle>Photo +</LabelPhotoStyle>
-      <PhotoFileStyle type="file"></PhotoFileStyle>
-    </div>
+    <>
+      <LabelPhotoStyle htmlFor="file">Photo +</LabelPhotoStyle>
+      <PhotoFileStyle type="file" id="file"></PhotoFileStyle>
+    </>
   );
 };
 

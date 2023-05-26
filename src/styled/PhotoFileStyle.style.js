@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Style for the input type file
 const PhotoFileStyle = styled.input`
 background-color: white;
 margin:bottom: 10px;

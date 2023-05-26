@@ -1,14 +1,8 @@
-import React from 'react'
-import HeaderStyle from '../../styled/HeaderStyle.style'
+import React from "react";
+import HeaderStyle from "../../styled/HeaderStyle.style";
 
 const Heading = () => {
-  return (
-    <div>
-      <HeaderStyle>
-        SignUp
-      </HeaderStyle>
-    </div>
-  )
-}
+  return <HeaderStyle>SignUp</HeaderStyle>;
+};
 
-export default Heading
+export default Heading;
