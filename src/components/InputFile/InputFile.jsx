@@ -1,6 +1,6 @@
 import React from "react";
-import PhotoFileStyle from "../styled/PhotoFileStyle.style";
-import LabelPhotoStyle from "../styled/LabelPhotoStyle.style";
+import PhotoFileStyle from "../../styled/PhotoFileStyle.style";
+import LabelPhotoStyle from "../../styled/LabelPhotoStyle.style";
 
 const InputFile = () => {
   return (

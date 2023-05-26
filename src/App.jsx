@@ -1,26 +1,16 @@
-import AppStyle from "./styled/App.style"
-import Heading from "./components/Header/Heading"
-import Input from "./components/Input/Input"
-import Button from "./components/Button/Button"
-import FormWrapper from "./styled/FormWrapper.style"
-import Image from "./components/Image/Image"
-import InputFile from "./InputFile/InputFile"
+import AppStyle from "./styled/App.style";
+import Wrapper from "./components/Form/Wrapper";
+import Image from "./components/Image/Image";
 
 function App() {
-
   return (
     <>
-    <AppStyle>
-      <FormWrapper>
-      <Heading />
-      <InputFile />
-      <Input />
-      <Button />
-      </FormWrapper>
+      <AppStyle>
+        <Wrapper />
         <Image />
-    </AppStyle>
+      </AppStyle>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
