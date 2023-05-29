@@ -6,8 +6,18 @@ import ErrorStyle from "../../styled/ErrorStyle.style";
 import { validationSchema } from "../../constants/schema";
 import InputFile from "../InputFile/InputFile";
 import Button from "../Button/Button";
+import { useState } from "react";
+import SelectStyle from "../../styled/SelectStyle.style";
 
 const Input = () => {
+  const [selectedImageName, setSelectedImageName] = useState("");
+
+  const setImage = (e) => {
+    const selectedFile = e.currentTarget.files[0];
+    formik.setFieldValue("image", selectedFile);
+    setSelectedImageName(selectedFile.name);
+  };
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -15,27 +25,35 @@ const Input = () => {
       phone: "",
       password: "",
       repassword: "",
-      image:null
+      image: null,
     },
     validationSchema,
     onSubmit: (values) => {
       console.log(values);
     },
   });
-  const setImage = (e) =>{
-    formik.setFieldValue("image", e.currentTarget.files[0]);
-  }
+
   return (
     <form onSubmit={formik.handleSubmit} reset={formik.resetForm}>
-      <InputFile label="+ Photo" id="name" setImage={setImage} onBlur={formik.handleBlur} error={formik.touched.image && formik.errors.image ? formik.errors.image : null }/>
+      <InputFile
+        label="+ Photo"
+        id="name"
+        setImage={setImage}
+        onBlur={formik.handleBlur}
+        error={
+          formik.touched.image && formik.errors.image
+            ? formik.errors.image
+            : null
+        }
+      />
+      {selectedImageName && <SelectStyle>Selected Image: {selectedImageName}</SelectStyle>}
       <LabelStyle>Name</LabelStyle>
       <InputStyle
         type="text"
         id="name"
         name="name"
-        value={formik.values.name}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        placeholder="Enter the name"
+        {...formik.getFieldProps("name")}
       />
       {formik.touched.name && formik.errors.name ? (
         <ErrorStyle>{formik.errors.name}</ErrorStyle>
@@ -46,9 +64,8 @@ const Input = () => {
         type="email"
         id="email"
         name="email"
-        value={formik.values.email}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        placeholder="Enter the email"
+        {...formik.getFieldProps("email")}
       />
       {formik.touched.email && formik.errors.email ? (
         <ErrorStyle>{formik.errors.email}</ErrorStyle>
@@ -59,9 +76,8 @@ const Input = () => {
         type="text"
         id="phone"
         name="phone"
-        value={formik.values.phone}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        placeholder="Enter the phone no."
+        {...formik.getFieldProps("phone")}
       />
       {formik.touched.phone && formik.errors.phone ? (
         <ErrorStyle>{formik.errors.phone}</ErrorStyle>
@@ -72,9 +88,8 @@ const Input = () => {
         type="password"
         id="password"
         name="password"
-        value={formik.values.password}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        placeholder="Enter the password"
+        {...formik.getFieldProps("password")}
       />
       {formik.touched.password && formik.errors.password ? (
         <ErrorStyle>{formik.errors.password}</ErrorStyle>
@@ -85,16 +100,14 @@ const Input = () => {
         type="password"
         id="repassword"
         name="repassword"
-        value={formik.values.repassword}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        placeholder="Re-Enter the password"
+        {...formik.getFieldProps("repassword")}
       />
       {formik.touched.repassword && formik.errors.repassword ? (
         <ErrorStyle>{formik.errors.repassword}</ErrorStyle>
       ) : null}
-     <Button/>
+      <Button />
     </form>
-    
   );
 };
 
