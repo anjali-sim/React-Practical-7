@@ -8,9 +8,15 @@ import InputFile from "../InputFile/InputFile";
 import Button from "../Button/Button";
 import { useState } from "react";
 import SelectStyle from "../../styled/SelectStyle.style";
+import { ResetButtonStyle } from "../../styled/ButtonStyle.style";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../reducers/userSlice";
+import { useNavigate } from "react-router";
 
 const Input = () => {
   const [selectedImageName, setSelectedImageName] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const setImage = (e) => {
     const selectedFile = e.currentTarget.files[0];
@@ -29,12 +35,19 @@ const Input = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      dispatch(setUserData({...values, image: null}));
       console.log(values);
+      navigate("/home");
     },
   });
 
+  const handleReset = () => {
+    formik.resetForm();
+    setSelectedImageName("");
+  };
+
   return (
-    <form onSubmit={formik.handleSubmit} reset={formik.resetForm}>
+    <form onSubmit={formik.handleSubmit} onReset={handleReset}>
       <InputFile
         label="+ Photo"
         id="name"
@@ -106,7 +119,9 @@ const Input = () => {
       {formik.touched.repassword && formik.errors.repassword ? (
         <ErrorStyle>{formik.errors.repassword}</ErrorStyle>
       ) : null}
+
       <Button />
+      <ResetButtonStyle type="reset">Reset</ResetButtonStyle>
     </form>
   );
 };

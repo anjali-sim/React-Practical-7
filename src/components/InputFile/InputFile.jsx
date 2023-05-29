@@ -3,8 +3,7 @@ import PhotoFileStyle from "../../styled/PhotoFileStyle.style";
 import LabelPhotoStyle from "../../styled/LabelPhotoStyle.style";
 import ErrorStyle from "../../styled/ErrorStyle.style";
 
-const InputFile = ({label,id, setImage,onBlur,error}) => {
-
+const InputFile = ({ label, id, setImage, onBlur, error }) => {
   return (
     <>
       <LabelPhotoStyle htmlFor={id}>{label}</LabelPhotoStyle>
@@ -13,14 +12,13 @@ const InputFile = ({label,id, setImage,onBlur,error}) => {
         id={id}
         accept=".jpg, .jpeg, .png"
         onChange={(event) => {
-          setImage(event)
+          setImage(event);
         }}
         onBlur={onBlur}
       ></PhotoFileStyle>
-          {onBlur && error && <ErrorStyle>{error}</ErrorStyle>}
+      {onBlur && error && <ErrorStyle>{error}</ErrorStyle>}
     </>
   );
 };
 
 export default InputFile;
-
