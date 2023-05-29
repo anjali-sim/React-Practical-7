@@ -1,7 +1,6 @@
 import AppStyle from "./styled/App.style";
 import Wrapper from "./components/Form/Wrapper";
 import Image from "./components/Image/Image";
-// import In from "./components/Input/In";
 
 function App() {
   return (
@@ -9,7 +8,6 @@ function App() {
       <AppStyle>
         <Wrapper />
         <Image />
-        {/* <In /> */}
       </AppStyle>
     </>
   );
