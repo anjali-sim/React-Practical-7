@@ -4,7 +4,7 @@ import InputStyle from "../../styled/InputStyle.style";
 import LabelStyle from "../../styled/LabelStyle.style";
 import ErrorStyle from "../../styled/ErrorStyle.style";
 import { validationSchema } from "../../constants/schema";
-import InputFile from "../InputFile/InputFile";
+import FileUpload from "../FileUpload/FileUpload";
 import Button from "../Button/Button";
 import { useState } from "react";
 import SelectStyle from "../../styled/SelectStyle.style";
@@ -15,6 +15,7 @@ import { useNavigate } from "react-router";
 
 const Input = () => {
   const [selectedImageName, setSelectedImageName] = useState("");
+  const [selectedImageBase64, setSelectedImageBase64] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,6 +23,13 @@ const Input = () => {
     const selectedFile = e.currentTarget.files[0];
     formik.setFieldValue("image", selectedFile);
     setSelectedImageName(selectedFile.name);
+
+    // Convert image to base64
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setSelectedImageBase64(reader.result);
+    };
+    reader.readAsDataURL(selectedFile);
   };
 
   const formik = useFormik({
@@ -35,7 +43,7 @@ const Input = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      dispatch(setUserData({...values, image: null}));
+      dispatch(setUserData({ ...values, image: selectedImageBase64 }));
       console.log(values);
       navigate("/home");
     },
@@ -44,13 +52,15 @@ const Input = () => {
   const handleReset = () => {
     formik.resetForm();
     setSelectedImageName("");
+    setSelectedImageBase64("");
   };
 
   return (
     <form onSubmit={formik.handleSubmit} onReset={handleReset}>
-      <InputFile
+      <FileUpload
         label="+ Photo"
-        id="name"
+        id="image"
+        name="image"
         setImage={setImage}
         onBlur={formik.handleBlur}
         error={
@@ -59,7 +69,10 @@ const Input = () => {
             : null
         }
       />
-      {selectedImageName && <SelectStyle>Selected Image: {selectedImageName}</SelectStyle>}
+      {selectedImageName && (
+        <SelectStyle>Selected Image: {selectedImageName}</SelectStyle>
+      )}
+
       <LabelStyle>Name</LabelStyle>
       <InputStyle
         type="text"

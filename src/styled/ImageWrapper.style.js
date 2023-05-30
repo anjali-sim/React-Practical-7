@@ -8,6 +8,9 @@ const ImageWrapper = styled.div`
   @media (max-width: 850px) {
     margin-left: 20px;
   }
+  @media (max-width: 850px) {
+    margin-left: 10px;
+  }
 `;
 
 export default ImageWrapper;

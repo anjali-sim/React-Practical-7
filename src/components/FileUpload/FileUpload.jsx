@@ -3,13 +3,14 @@ import PhotoFileStyle from "../../styled/PhotoFileStyle.style";
 import LabelPhotoStyle from "../../styled/LabelPhotoStyle.style";
 import ErrorStyle from "../../styled/ErrorStyle.style";
 
-const InputFile = ({ label, id, setImage, onBlur, error }) => {
+const FileUpload = ({ label, id, name, setImage, onBlur, error }) => {
   return (
     <>
       <LabelPhotoStyle htmlFor={id}>{label}</LabelPhotoStyle>
       <PhotoFileStyle
         type="file"
         id={id}
+        name={name}
         accept=".jpg, .jpeg, .png"
         onChange={(event) => {
           setImage(event);
@@ -21,4 +22,4 @@ const InputFile = ({ label, id, setImage, onBlur, error }) => {
   );
 };
 
-export default InputFile;
+export default FileUpload;
