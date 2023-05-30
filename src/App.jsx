@@ -1,17 +1,18 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SignUp from "./components/SignUp/SignUp";
-import Home from "./components/Home/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SignUp from "./components/Pages/SignUp/SignUp";
+import Home from "./components/Pages/Home/Home";
+import NotFound from "./Routes/NotFound";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<SignUp/>} />
-        <Route path="/home" element={<Home/>} />
+        <Route exact path="/signup" element={<SignUp />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
