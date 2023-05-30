@@ -1,5 +1,5 @@
 import React from "react";
-import { SubmitButtonStyle } from "../../styled/ButtonStyle.style";
+import { SubmitButtonStyle } from "./ButtonStyle.style";
 
 const Button = () => {
   return (

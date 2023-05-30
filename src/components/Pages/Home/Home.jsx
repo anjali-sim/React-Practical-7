@@ -15,7 +15,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector(selectUserData);
-  const isAuthenticated = useSelector(selectIsAuthenticated);
+  // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -32,11 +32,10 @@ const Home = () => {
     }
   }, [userData, navigate]);
 
-
   const handleLogout = () => {
     dispatch(logout());
     dispatch(setUserData(""));
-    localStorage.removeItem("userData");
+    // localStorage.removeItem("userData");
     navigate("/signup");
   };
 
@@ -48,7 +47,7 @@ const Home = () => {
   return (
     <>
       <Navigation>
-        <HomeButton onClick={handleLogout}>Logout</HomeButton>
+        <HomeButton onClick={() => handleLogout()}>Logout</HomeButton>
       </Navigation>
 
       <WrapperStyle>

@@ -1,7 +1,7 @@
 import React from "react";
-import PhotoFileStyle from "../../styled/PhotoFileStyle.style";
-import LabelPhotoStyle from "../../styled/LabelPhotoStyle.style";
-import ErrorStyle from "../../styled/ErrorStyle.style";
+import PhotoFileStyle from "./PhotoFileStyle.style";
+import LabelPhotoStyle from "./LabelPhotoStyle.style";
+import ErrorStyle from "../../../../styled/ErrorStyle.style";
 
 const FileUpload = ({ label, id, name, setImage, onBlur, error }) => {
   return (

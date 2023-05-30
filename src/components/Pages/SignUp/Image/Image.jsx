@@ -1,7 +1,7 @@
 import React from "react";
-import ImageStyle from "../../styled/ImageStyle.style";
-import formImage from "../../assets/images/formImage.png";
-import ImageWrapper from "../../styled/ImageWrapper.style";
+import ImageStyle from "./ImageStyle.style";
+import formImage from "../../../../assets/images/formImage.png";
+import ImageWrapper from "./ImageWrapper.style";
 
 const Image = () => {
   return (

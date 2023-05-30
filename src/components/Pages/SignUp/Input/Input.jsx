@@ -1,23 +1,31 @@
 import React from "react";
-import { useFormik } from "formik";
-import InputStyle from "../../styled/InputStyle.style";
-import LabelStyle from "../../styled/LabelStyle.style";
-import ErrorStyle from "../../styled/ErrorStyle.style";
-import { VALIDATIONSCHEMA } from "../../constants/schema";
+import { useFormik} from "formik";
+import InputStyle from "./InputStyle.style";
+import LabelStyle from "./LabelStyle.style";
+import ErrorStyle from "../../../../styled/ErrorStyle.style";
+import {validationSchema} from "../../../../constants/schema";
 import FileUpload from "../FileUpload/FileUpload";
 import Button from "../Button/Button";
 import { useState } from "react";
-import SelectStyle from "../../styled/SelectStyle.style";
-import { ResetButtonStyle } from "../../styled/ButtonStyle.style";
-import { useDispatch } from "react-redux";
-import { setUserData } from "../../reducers/userSlice";
+import SelectStyle from "./SelectStyle.style";
+import { ResetButtonStyle } from "../Button/ButtonStyle.style";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserData } from "../../../../reducers/userSlice";
 import { useNavigate } from "react-router";
+import { login, selectIsAuthenticated } from "../../../../reducers/authSlice";
 
 const Input = () => {
   const [selectedImageName, setSelectedImageName] = useState("");
   const [selectedImageBase64, setSelectedImageBase64] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+  console.log(isAuthenticated, "inside home");
+
+    if(isAuthenticated) {
+      navigate("/home");
+    }
 
   const setImage = (e) => {
     const selectedFile = e.currentTarget.files[0];
@@ -41,11 +49,15 @@ const Input = () => {
       repassword: "",
       image: null,
     },
-    VALIDATIONSCHEMA,
-    onSubmit: (values) => {
+    validationSchema,
+    onSubmit: async (values) => {
+      // e.preventDefault();
       dispatch(setUserData({ ...values, image: selectedImageBase64 }));
+      dispatch(login());
       console.log(values);
       navigate("/home");
+      // setSubmitting(false);
+
     },
   });
 
