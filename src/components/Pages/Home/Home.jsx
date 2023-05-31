@@ -62,10 +62,8 @@ const Home = () => {
       <WrapperStyle>
         <HomeWrapper>
           <ProfilePicture src={userData.image} alt="Profile Picture" />
-          <HomeParagraph>
-            <HomeSuccessMsg>Successfully Registered</HomeSuccessMsg>
-            Hello
-          </HomeParagraph>{" "}
+          <HomeSuccessMsg>Successfully Registered</HomeSuccessMsg>
+          Hello,
           <HomeBold>{userData.name}</HomeBold>
           <HomeParagraph>
             You are registered with the email id - {userData.email}
