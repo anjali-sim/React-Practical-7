@@ -1,7 +1,8 @@
 import React from "react";
 import PhotoFileStyle from "./PhotoFileStyle.style";
 import LabelPhotoStyle from "./LabelPhotoStyle.style";
-import ErrorStyle from "../../../../styled/ErrorStyle.style";
+import ErrorStyle from "../../styled/ErrorStyle.style";
+import PropTypes from "prop-types";
 
 const FileUpload = ({ label, id, name, setImage, onBlur, error }) => {
   return (
@@ -20,6 +21,15 @@ const FileUpload = ({ label, id, name, setImage, onBlur, error }) => {
       {onBlur && error && <ErrorStyle>{error}</ErrorStyle>}
     </>
   );
+};
+
+FileUpload.propTypes = {
+  label: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  setImage: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  error: PropTypes.string,
 };
 
 export default FileUpload;

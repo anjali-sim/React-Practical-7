@@ -1,4 +1,6 @@
-export const VALIDATIONMESSAGES = {
+// variable for storing the validation messages
+
+const VALIDATIONMESSAGES = {
   name: {
     required: "Name is required",
     min: "Name must be at least 5 characters",
@@ -28,3 +30,5 @@ export const VALIDATIONMESSAGES = {
     fileType: "Only JPG or PNG images are allowed",
   },
 };
+
+export default VALIDATIONMESSAGES;

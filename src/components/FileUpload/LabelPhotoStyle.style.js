@@ -10,7 +10,7 @@ const LabelPhotoStyle = styled.label`
   @media (max-width: 700px) {
     margin-left: 140px;
   }
-  
+
   @media (max-width: 600px) {
     font-size: 13px;
     margin-left: 115px;

@@ -1,7 +1,7 @@
 import React from "react";
-import AppStyle from "../../../styled/App.style";
-import Wrapper from "./Form/Wrapper";
-import Image from "./Image/Image";
+import AppStyle from "../../styled/AppStyle.style";
+import Wrapper from "../../components/Form/Wrapper";
+import Image from "../../components/Image/Image";
 
 const SignUp = () => {
   return (

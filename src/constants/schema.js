@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 import { VALIDATIONMESSAGES } from "./validationMessages";
 
-export const validationSchema = Yup.object().shape({
+// variable for the validation schema for formik
+const VALIDATIONSCHEMA = Yup.object().shape({
   name: Yup.string()
     .required(VALIDATIONMESSAGES.name.required)
     .min(5, VALIDATIONMESSAGES.name.min),
@@ -35,3 +36,5 @@ export const validationSchema = Yup.object().shape({
       return true;
     }),
 });
+
+export default VALIDATIONSCHEMA;

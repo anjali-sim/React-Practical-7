@@ -2,17 +2,17 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { useFormik } from "formik";
 import InputComponent from "./InputComponent.style";
 import LabelStyle from "./LabelStyle.style";
-import ErrorStyle from "../../../../styled/ErrorStyle.style";
-import { validationSchema } from "../../../../constants/schema";
+import ErrorStyle from "../../styled/ErrorStyle.style";
+import { VALIDATIONSCHEMA } from "../../constants/schema";
 import FileUpload from "../FileUpload/FileUpload";
 import Button from "../Button/Button";
 import { useState } from "react";
 import SelectStyle from "./SelectStyle.style";
 import { ResetButtonStyle } from "../Button/ButtonStyle.style";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserData } from "../../../../reducers/userSlice";
+import { setUserData } from "../../reducers/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
-import { login } from "../../../../reducers/authSlice";
+import { login } from "../../reducers/authSlice";
 
 const Input = () => {
   const [selectedImageName, setSelectedImageName] = useState("");
@@ -45,7 +45,7 @@ const Input = () => {
       repassword: "",
       image: null,
     },
-    validationSchema,
+    VALIDATIONSCHEMA,
     onSubmit: async (values) => {
       dispatch(setUserData({ ...values, image: selectedImageBase64 }));
       dispatch(login());

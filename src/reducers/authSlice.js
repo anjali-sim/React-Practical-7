@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Slice for the authentication of the user
 const authSlice = createSlice({
   name: "auth",
   initialState: {
