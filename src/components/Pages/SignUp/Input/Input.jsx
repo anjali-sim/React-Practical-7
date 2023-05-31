@@ -1,9 +1,9 @@
-import React from "react";
-import { useFormik} from "formik";
+import React, { useEffect, useLayoutEffect } from "react";
+import { useFormik } from "formik";
 import InputComponent from "./InputComponent.style";
 import LabelStyle from "./LabelStyle.style";
 import ErrorStyle from "../../../../styled/ErrorStyle.style";
-import {validationSchema} from "../../../../constants/schema";
+import { validationSchema } from "../../../../constants/schema";
 import FileUpload from "../FileUpload/FileUpload";
 import Button from "../Button/Button";
 import { useState } from "react";
@@ -11,7 +11,7 @@ import SelectStyle from "./SelectStyle.style";
 import { ResetButtonStyle } from "../Button/ButtonStyle.style";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../../../reducers/userSlice";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router-dom";
 import { login } from "../../../../reducers/authSlice";
 
 const Input = () => {
@@ -19,16 +19,9 @@ const Input = () => {
   const [selectedImageBase64, setSelectedImageBase64] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  console.log(isAuthenticated, "inside home");
-
-    if(isAuthenticated) {
-      navigate("/home");
-    }
-    else {
-      navigate("/home");
-    }
+  if (isAuthenticated) return <Navigate to={"/home"} />;
 
   const setImage = (e) => {
     const selectedFile = e.currentTarget.files[0];
@@ -56,7 +49,6 @@ const Input = () => {
     onSubmit: async (values) => {
       dispatch(setUserData({ ...values, image: selectedImageBase64 }));
       dispatch(login());
-      console.log(values);
       navigate("/home");
     },
   });

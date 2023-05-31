@@ -9,13 +9,22 @@ import WrapperStyle from "../../../styled/WrapperStyle.style";
 import ProfilePicture from "./ProfilePicture.style";
 import Navigation from "./Navigation.style";
 import { useEffect } from "react";
-import { selectIsAuthenticated } from "../../../reducers/authSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector(selectUserData);
-  // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/signup");
+    }
+  });
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -26,7 +35,6 @@ const Home = () => {
 
   useEffect(() => {
     if (!userData) {
-      // navigate("/");
     } else {
       localStorage.setItem("userData", JSON.stringify(userData));
     }
@@ -36,12 +44,12 @@ const Home = () => {
     dispatch(logout());
     dispatch(setUserData(""));
     localStorage.removeItem("userData");
-    navigate("/");
+    localStorage.removeItem("isAuthenticated");
+    navigate("/signup");
   };
 
-   // Check if userData is available before rendering
-   if (!userData) {
-    // navigate("/");
+  // Check if userData is available before rendering
+  if (!userData) {
     return null;
   }
 
