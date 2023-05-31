@@ -1,35 +1,37 @@
 import * as Yup from "yup";
+import { VALIDATIONMESSAGES } from "./validationMessages";
 
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
-    .required("Name is required")
-    .min(5, "Name must be at least 5 characters"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
+    .required(VALIDATIONMESSAGES.name.required)
+    .min(5, VALIDATIONMESSAGES.name.min),
+  email: Yup.string()
+    .email(VALIDATIONMESSAGES.email.email)
+    .required(VALIDATIONMESSAGES.email.required),
   phone: Yup.string()
-    .matches(/^[0-9]{10}$/, "Invalid Indian phone number")
-    .required("Phone number is required"),
+    .matches(/^[0-9]{10}$/, VALIDATIONMESSAGES.phone.matches)
+    .required(VALIDATIONMESSAGES.phone.required),
   password: Yup.string()
-    .required("Password is required")
-    .min(8, "Password must be atleast 8 characters.")
-    .matches(/[a-z]/, "Password requires a lowercase letter.")
-    .matches(/[A-Z]/, "Password requires an uppercase letter.")
-    .matches(/[0-9]/, "Password requires a number.")
-    .matches(/[^\w]/, "Password requires a symbol."),
+    .required(VALIDATIONMESSAGES.password.required)
+    .min(8, VALIDATIONMESSAGES.password.min)
+    .matches(/[a-z]/, VALIDATIONMESSAGES.password.matches)
+    .matches(/[A-Z]/, VALIDATIONMESSAGES.password.matches)
+    .matches(/[0-9]/, VALIDATIONMESSAGES.password.matches)
+    .matches(/[^\w]/, VALIDATIONMESSAGES.password.matches),
   repassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Confirm Password is required"),
+    .oneOf([Yup.ref("password"), null], VALIDATIONMESSAGES.repassword.oneOf)
+    .required(VALIDATIONMESSAGES.repassword.required),
   image: Yup.mixed()
-    .test("fileSize", "File size must be less than 2MB", (value) => {
+    .test("fileSize", VALIDATIONMESSAGES.image.fileSize, (value) => {
       if (value) {
         return value.size <= 2 * 1024 * 1024; // size 2MB in bytes
       }
       return true;
     })
-    .test("fileType", "Only JPG or PNG images are allowed", (value) => {
+    .test("fileType", VALIDATIONMESSAGES.image.fileType, (value) => {
       if (value) {
         return ["image/jpeg", "image/png"].includes(value.type);
       }
       return true;
     }),
 });
-
