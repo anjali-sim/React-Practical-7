@@ -26,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!userData) {
-      // navigate("/signup");
+      // navigate("/");
     } else {
       localStorage.setItem("userData", JSON.stringify(userData));
     }
@@ -35,12 +35,13 @@ const Home = () => {
   const handleLogout = () => {
     dispatch(logout());
     dispatch(setUserData(""));
-    // localStorage.removeItem("userData");
-    navigate("/signup");
+    localStorage.removeItem("userData");
+    navigate("/");
   };
 
    // Check if userData is available before rendering
    if (!userData) {
+    // navigate("/");
     return null;
   }
 

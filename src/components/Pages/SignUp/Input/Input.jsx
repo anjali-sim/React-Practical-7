@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik} from "formik";
-import InputStyle from "./InputStyle.style";
+import InputComponent from "./InputComponent.style";
 import LabelStyle from "./LabelStyle.style";
 import ErrorStyle from "../../../../styled/ErrorStyle.style";
 import {validationSchema} from "../../../../constants/schema";
@@ -12,7 +12,7 @@ import { ResetButtonStyle } from "../Button/ButtonStyle.style";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../../../reducers/userSlice";
 import { useNavigate } from "react-router";
-import { login, selectIsAuthenticated } from "../../../../reducers/authSlice";
+import { login } from "../../../../reducers/authSlice";
 
 const Input = () => {
   const [selectedImageName, setSelectedImageName] = useState("");
@@ -24,6 +24,9 @@ const Input = () => {
   console.log(isAuthenticated, "inside home");
 
     if(isAuthenticated) {
+      navigate("/home");
+    }
+    else {
       navigate("/home");
     }
 
@@ -51,13 +54,10 @@ const Input = () => {
     },
     validationSchema,
     onSubmit: async (values) => {
-      // e.preventDefault();
       dispatch(setUserData({ ...values, image: selectedImageBase64 }));
       dispatch(login());
       console.log(values);
       navigate("/home");
-      // setSubmitting(false);
-
     },
   });
 
@@ -86,7 +86,7 @@ const Input = () => {
       )}
 
       <LabelStyle>Name</LabelStyle>
-      <InputStyle
+      <InputComponent
         type="text"
         id="name"
         name="name"
@@ -98,7 +98,7 @@ const Input = () => {
       ) : null}
 
       <LabelStyle>Email</LabelStyle>
-      <InputStyle
+      <InputComponent
         type="email"
         id="email"
         name="email"
@@ -110,7 +110,7 @@ const Input = () => {
       ) : null}
 
       <LabelStyle>PhoneNo</LabelStyle>
-      <InputStyle
+      <InputComponent
         type="text"
         id="phone"
         name="phone"
@@ -122,7 +122,7 @@ const Input = () => {
       ) : null}
 
       <LabelStyle>Password</LabelStyle>
-      <InputStyle
+      <InputComponent
         type="password"
         id="password"
         name="password"
@@ -134,7 +134,7 @@ const Input = () => {
       ) : null}
 
       <LabelStyle>Confirm Password</LabelStyle>
-      <InputStyle
+      <InputComponent
         type="password"
         id="repassword"
         name="repassword"

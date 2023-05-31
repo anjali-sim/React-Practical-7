@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Style for the input fields
-const InputStyle = styled.input.attrs()`
+const InputComponent = styled.input.attrs()`
   background-color: #faebd8 !important;
   border: 1px solid #faebd8;
   color: black;
@@ -26,4 +26,4 @@ const InputStyle = styled.input.attrs()`
   }
 `;
 
-export default InputStyle;
+export default InputComponent;
