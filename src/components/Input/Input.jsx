@@ -1,19 +1,22 @@
 import React from "react";
 import { useFormik } from "formik";
-import InputComponent from "./InputComponentStyle.style";
-import LabelComponent from "../Label/LabelComponent";
+import {
+  InputComponentStyle,
+  LabelComponent,
+  InputComponent,
+  SelectStyle,
+} from "@src/components/Input/index";
 import ErrorStyle from "@src/styled/ErrorStyle.style";
 import validationSchema from "@src/constants/schema";
-import FileUpload from "../FileUpload/FileUpload";
-import Button from "../Button/Button";
+import { FileUpload } from "@src/components/FileUpload/index";
+import Button from "@src/components/Button/index";
 import { useState } from "react";
-import SelectStyle from "./SelectStyle.style";
-import { ResetButtonStyle } from "../Button/ButtonStyle.style";
+import { ResetButtonStyle } from "@src/components/Button/ButtonStyle.style";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "@src/reducers/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import { login } from "@src/reducers/authSlice";
-import initialValues from "../../constants/initialValues";
+import initialValues from "@src/constants/initialValues";
 
 const Input = () => {
   const [selectedImageName, setSelectedImageName] = useState("");

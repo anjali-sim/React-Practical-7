@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LabelStyle from "./LabelStyle.style";
+import LabelStyle from "@src/components/Label/LabelStyle.style";
 
 const LabelComponent = ({ htmlFor, children }) => {
   return <LabelStyle htmlFor={htmlFor}>{children}</LabelStyle>;

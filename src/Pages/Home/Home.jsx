@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUserData, setUserData } from "@src/reducers/userSlice";
 import { logout } from "@src/reducers/authSlice";
 import { useNavigate } from "react-router-dom";
-import { HomeButton, HomeWrapper } from "./Button.style";
-import { HomeParagraph, HomeBold, HomeSuccessMsg } from "./Paragraph.style";
+import {
+  HomeButton,
+  HomeWrapper,
+  HomeParagraph,
+  HomeBold,
+  HomeSuccessMsg,
+  Navigation,
+  ProfilePicture,
+} from "@src/Pages/Home/index";
 import WrapperStyle from "@src/styled/WrapperStyle.style";
-import ProfilePicture from "./ProfilePicture.style";
-import Navigation from "./Navigation.style";
 import { useEffect } from "react";
 
 const Home = () => {

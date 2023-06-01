@@ -1,8 +1,8 @@
 import React from "react";
-import { SubmitButtonStyle } from "./ButtonStyle.style";
 import PropTypes from "prop-types";
+import { SubmitButtonStyle } from "@src/components/Button/ButtonStyle.style";
 
-const Button = ({type}) => {
+const Button = ({ type }) => {
   return <SubmitButtonStyle type={type}>Submit</SubmitButtonStyle>;
 };
 

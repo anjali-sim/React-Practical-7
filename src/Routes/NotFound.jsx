@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import notFound from "@src/assets/images/notFound.json";
-import LottieDiv from "./LottieDiv.style";
+import LottieDiv from "@src/Routes/LottieDiv.style";
 
 const NotFound = () => {
   const animationContainer = useRef(null);
@@ -9,7 +9,6 @@ const NotFound = () => {
   useEffect(() => {
     const animation = lottie.loadAnimation({
       container: animationContainer.current,
-      // renderer: "svg",
       animationData: notFound,
       loop: true,
       autoplay: true,
