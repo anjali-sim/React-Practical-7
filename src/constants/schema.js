@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { VALIDATIONMESSAGES } from "./validationMessages";
+import VALIDATIONMESSAGES from "./validationMessages";
 
 // variable for the validation schema for formik
 const VALIDATIONSCHEMA = Yup.object().shape({

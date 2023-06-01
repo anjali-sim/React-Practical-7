@@ -1,6 +1,6 @@
 import React from "react";
 import ImageStyle from "./ImageStyle.style";
-import formImage from "../../assets/images/formImage.png";
+import formImage from "@src/assets/images/formImage.png";
 import ImageWrapper from "./ImageWrapper.style";
 
 const Image = () => {

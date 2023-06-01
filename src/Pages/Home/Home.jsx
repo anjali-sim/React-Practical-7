@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserData, setUserData } from "../../reducers/userSlice";
-import { logout } from "../../reducers/authSlice";
+import { selectUserData, setUserData } from "@src/reducers/userSlice";
+import { logout } from "@src/reducers/authSlice";
 import { useNavigate } from "react-router-dom";
 import { HomeButton, HomeWrapper } from "./Button.style";
 import { HomeParagraph, HomeBold, HomeSuccessMsg } from "./Paragraph.style";
-import WrapperStyle from "../../styled/WrapperStyle.style";
+import WrapperStyle from "@src/styled/WrapperStyle.style";
 import ProfilePicture from "./ProfilePicture.style";
 import Navigation from "./Navigation.style";
 import { useEffect } from "react";
