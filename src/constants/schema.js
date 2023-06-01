@@ -1,35 +1,35 @@
 import * as Yup from "yup";
-import VALIDATION_MESSAGES from "./validationMessages";
+import * as validationMessages from "./validationMessages";
 
-// variable for the validation schema for formik
-const VALIDATION_SCHEMA = Yup.object().shape({
+// variable for the validation schema in formik
+const validationSchema = Yup.object().shape({
   name: Yup.string()
-    .required(VALIDATION_MESSAGES.name.required)
-    .min(5, VALIDATION_MESSAGES.name.min),
+    .required(validationMessages.NAME_REQUIRED)
+    .min(5, validationMessages.NAME_MIN_LENGTH),
   email: Yup.string()
-    .email(VALIDATION_MESSAGES.email.email)
-    .required(VALIDATION_MESSAGES.email.required),
+    .email(validationMessages.EMAIL_INVALID)
+    .required(validationMessages.EMAIL_REQUIRED),
   phone: Yup.string()
-    .matches(/^[0-9]{10}$/, VALIDATION_MESSAGES.phone.matches)
-    .required(VALIDATION_MESSAGES.phone.required),
+    .matches(/^[0-9]{10}$/, validationMessages.PHONE_INVALID)
+    .required(validationMessages.PHONE_REQUIRED),
   password: Yup.string()
-    .required(VALIDATION_MESSAGES.password.required)
-    .min(8, VALIDATION_MESSAGES.password.min)
-    .matches(/[a-z]/, VALIDATION_MESSAGES.password.matches)
-    .matches(/[A-Z]/, VALIDATION_MESSAGES.password.matches)
-    .matches(/[0-9]/, VALIDATION_MESSAGES.password.matches)
-    .matches(/[^\w]/, VALIDATION_MESSAGES.password.matches),
+    .required(validationMessages.PASSWORD_REQUIRED)
+    .min(8, validationMessages.PASSWORD_MIN_LENGTH)
+    .matches(/[a-z]/, validationMessages.PASSWORD_LOWERCASE)
+    .matches(/[A-Z]/, validationMessages.PASSWORD_UPPERCASE)
+    .matches(/[0-9]/, validationMessages.PASSWORD_NUMBER)
+    .matches(/[^\w]/, validationMessages.PASSWORD_SYMBOL),
   repassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], VALIDATION_MESSAGES.repassword.oneOf)
-    .required(VALIDATION_MESSAGES.repassword.required),
+    .oneOf([Yup.ref("password"), null], validationMessages.PASSWORDS_MATCH)
+    .required(validationMessages.CONFIRM_PASSWORD_REQUIRED),
   image: Yup.mixed()
-    .test("fileSize", VALIDATION_MESSAGES.image.fileSize, (value) => {
+    .test("fileSize", validationMessages.IMAGE_SIZE_LIMIT, (value) => {
       if (value) {
-        return value.size <= 2 * 1024 * 1024; // size 2MB in bytes
+        return value.size <= 2 * 1024 * 1024; // 2MB in bytes
       }
       return true;
     })
-    .test("fileType", VALIDATION_MESSAGES.image.fileType, (value) => {
+    .test("fileType", validationMessages.IMAGE_TYPE_LIMIT, (value) => {
       if (value) {
         return ["image/jpeg", "image/png"].includes(value.type);
       }
@@ -37,4 +37,4 @@ const VALIDATION_SCHEMA = Yup.object().shape({
     }),
 });
 
-export default VALIDATION_SCHEMA;
+export default validationSchema;
