@@ -1,6 +1,6 @@
 // variable for storing the validation messages
 
-const VALIDATIONMESSAGES = {
+const VALIDATION_MESSAGES = {
   name: {
     required: "Name is required",
     min: "Name must be at least 5 characters",
@@ -31,4 +31,4 @@ const VALIDATIONMESSAGES = {
   },
 };
 
-export default VALIDATIONMESSAGES;
+export default VALIDATION_MESSAGES;

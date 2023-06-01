@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import InputComponent from "./InputComponent.style";
 import LabelStyle from "./LabelStyle.style";
 import ErrorStyle from "@src/styled/ErrorStyle.style";
-import VALIDATIONSCHEMA from "@src/constants/schema";
+import VALIDATION_SCHEMA from "@src/constants/schema";
 import FileUpload from "../FileUpload/FileUpload";
 import Button from "../Button/Button";
 import { useState } from "react";
@@ -45,7 +45,7 @@ const Input = () => {
       repassword: "",
       image: null,
     },
-    VALIDATIONSCHEMA,
+    VALIDATION_SCHEMA,
     onSubmit: async (values) => {
       dispatch(setUserData({ ...values, image: selectedImageBase64 }));
       dispatch(login());
