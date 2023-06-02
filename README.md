@@ -24,6 +24,8 @@
 4. The Home page contains all the details of the user and has a Logout button.
 5. On clicking on the Logout button, the user is redirected to the SignUp form page.
 6. If any other URL is entered by the user, then it will be redirected to the Page Not Found page.
+7. The Not Found page contains an animation and a button is present on the top.
+8. The button can be redirected to Home or Signup page based on the user authentication.
 
 ## :camera_flash: Snapshot of the Practical
 ### UI of the Form!
@@ -32,6 +34,8 @@
 ![Screenshot from 2023-05-31 18-28-25](https://github.com/anjali-sim/React-Practical-7/assets/122269010/91694d3d-dddd-4a08-83b7-dfb9ce682afb)
 ### Home page displaying user details
 ![Screenshot from 2023-05-31 18-31-24](https://github.com/anjali-sim/React-Practical-7/assets/122269010/c0b8e16b-6857-47fd-b28f-ca51da7f4105)
+### Not Found page containing an animation and a button
+![Screenshot from 2023-06-02 15-19-37](https://github.com/anjali-sim/React-Practical-7/assets/122269010/0ef5d91c-a768-4129-a0d1-7631be2ccdf5)
 
 ## :hammer: Steps to Run the Project
 #### 1. Clone the Repository
