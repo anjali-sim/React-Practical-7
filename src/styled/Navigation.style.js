@@ -8,5 +8,4 @@ const Navigation = styled.div`
   justify-content: flex-end;
   margin-bottom: 50px;
 `;
-
-export default Navigation;
+ export default Navigation;

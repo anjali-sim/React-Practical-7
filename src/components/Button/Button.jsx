@@ -6,6 +6,10 @@ const Button = ({ type }) => {
   return <SubmitButtonStyle type={type}>Submit</SubmitButtonStyle>;
 };
 
+Button.defaultProps = {
+  type: "submit",
+};
+
 Button.propTypes = {
   type: PropTypes.string.isRequired,
 };
