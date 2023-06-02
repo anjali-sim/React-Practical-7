@@ -1,8 +1,18 @@
 import * as Yup from "yup";
 import * as validationMessages from "./validationMessages";
 
+// variable for initial values to use in formik
+export const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  password: "",
+  repassword: "",
+  image: null,
+};
+
 // variable for the validation schema in formik
-const validationSchema = Yup.object().shape({
+export const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required(validationMessages.NAME_REQUIRED)
     .min(5, validationMessages.NAME_MIN_LENGTH),
@@ -36,5 +46,3 @@ const validationSchema = Yup.object().shape({
       return true;
     }),
 });
-
-export default validationSchema;

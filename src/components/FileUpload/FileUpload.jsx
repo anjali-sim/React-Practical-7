@@ -5,7 +5,7 @@ import { LabelPhotoStyle } from "@src/components/FileUpload/index";
 import ErrorStyle from "@src/styled/ErrorStyle.style";
 import { ACCEPTED_FILE_FORMATS } from "@src/constants/fileUpload";
 
-const FileUpload = ({ label, id, name, setImage, onBlur, error }) => {
+const FileUpload = ({ label, id, name, onChange, onBlur, error }) => {
   return (
     <>
       <LabelPhotoStyle htmlFor={id}>{label}</LabelPhotoStyle>
@@ -14,9 +14,7 @@ const FileUpload = ({ label, id, name, setImage, onBlur, error }) => {
         id={id}
         name={name}
         accept={ACCEPTED_FILE_FORMATS}
-        onChange={(event) => {
-          setImage(event);
-        }}
+        onChange={onChange}
         onBlur={onBlur}
       ></PhotoFileStyle>
       {error && <ErrorStyle>{error}</ErrorStyle>}
@@ -24,11 +22,16 @@ const FileUpload = ({ label, id, name, setImage, onBlur, error }) => {
   );
 };
 
+FileUpload.defaultProps = {
+  onBlur: () => {},
+  error: null,
+};
+
 FileUpload.propTypes = {
-  label: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  setImage: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  setImage: PropTypes.func,
   onBlur: PropTypes.func,
   error: PropTypes.string,
 };

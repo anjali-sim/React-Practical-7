@@ -1,13 +1,12 @@
 import React from "react";
 import { useFormik } from "formik";
 import {
-  InputComponentStyle,
-  LabelComponent,
+  Label,
   InputComponent,
   SelectStyle,
 } from "@src/components/Input/index";
 import ErrorStyle from "@src/styled/ErrorStyle.style";
-import validationSchema from "@src/constants/schema";
+import { validationSchema, initialValues } from "@src/constants/schema";
 import { FileUpload } from "@src/components/FileUpload/index";
 import Button from "@src/components/Button/index";
 import { useState } from "react";
@@ -16,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "@src/reducers/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import { login } from "@src/reducers/authSlice";
-import initialValues from "@src/constants/initialValues";
 
 const Input = () => {
   const [selectedImageName, setSelectedImageName] = useState("");
@@ -44,7 +42,8 @@ const Input = () => {
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      dispatch(setUserData({ ...values, image: selectedImageBase64 }));
+      const { password, repassword, ...otherValues } = values;
+      dispatch(setUserData({ ...otherValues, image: selectedImageBase64 }));
       dispatch(login());
       navigate("/home");
     },
@@ -56,6 +55,10 @@ const Input = () => {
     setSelectedImageBase64("");
   };
 
+  const onChange = (event) => {
+    setImage(event);
+  };
+
   return (
     <>
       <form onSubmit={formik.handleSubmit} onReset={handleReset}>
@@ -63,7 +66,7 @@ const Input = () => {
           label="+ Photo"
           id="image"
           name="image"
-          setImage={setImage}
+          onChange={onChange}
           onBlur={formik.handleBlur}
           error={
             formik.touched.image && formik.errors.image
@@ -75,7 +78,7 @@ const Input = () => {
           <SelectStyle>Selected Image: {selectedImageName}</SelectStyle>
         )}
 
-        <LabelComponent htmlFor="name">Name</LabelComponent>
+        <Label htmlFor="name">Name</Label>
         <InputComponent
           type="text"
           id="name"
@@ -87,7 +90,7 @@ const Input = () => {
           <ErrorStyle>{formik.errors.name}</ErrorStyle>
         ) : null}
 
-        <LabelComponent htmlFor="email">Email</LabelComponent>
+        <Label htmlFor="email">Email</Label>
         <InputComponent
           type="email"
           id="email"
@@ -99,7 +102,7 @@ const Input = () => {
           <ErrorStyle>{formik.errors.email}</ErrorStyle>
         ) : null}
 
-        <LabelComponent htmlFor="phone">PhoneNo</LabelComponent>
+        <Label htmlFor="phone">PhoneNo</Label>
         <InputComponent
           type="text"
           id="phone"
@@ -111,7 +114,7 @@ const Input = () => {
           <ErrorStyle>{formik.errors.phone}</ErrorStyle>
         ) : null}
 
-        <LabelComponent htmlFor="password">Password</LabelComponent>
+        <Label htmlFor="password">Password</Label>
         <InputComponent
           type="password"
           id="password"
@@ -123,7 +126,7 @@ const Input = () => {
           <ErrorStyle>{formik.errors.password}</ErrorStyle>
         ) : null}
 
-        <LabelComponent htmlFor="repassword">Confirm Password</LabelComponent>
+        <Label htmlFor="repassword">Confirm Password</Label>
         <InputComponent
           type="password"
           id="repassword"
