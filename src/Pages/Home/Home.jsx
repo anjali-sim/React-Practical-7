@@ -29,7 +29,7 @@ const Home = () => {
     if (!isAuthenticated) {
       navigate("/signup");
     }
-  });
+  }, []);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");

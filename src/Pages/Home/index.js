@@ -1,11 +1,12 @@
-import { HomeButton, HomeWrapper } from "@src/Pages/Home/Button.style";
 import {
+  HomeButton,
+  HomeWrapper,
   HomeParagraph,
   HomeBold,
   HomeSuccessMsg,
-} from "@src/Pages/Home/Paragraph.style";
-import Navigation from "@src/Pages/Home/Navigation.style";
-import ProfilePicture from "@src/Pages/Home/ProfilePicture.style";
+  ProfilePicture,
+} from "@src/Pages/Home/HomeStyle.style";
+import Navigation from "@src/styled/Navigation.style";
 import Home from "@src/Pages/Home/Home";
 
 export {
@@ -14,7 +15,7 @@ export {
   HomeParagraph,
   HomeBold,
   HomeSuccessMsg,
-  Navigation,
   ProfilePicture,
+  Navigation,
   Home,
 };
